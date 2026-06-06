@@ -1,10 +1,6 @@
 import goblinImage from '../img/goblin.png';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const field = document.getElementById('game-field');
-  if (!field) throw new Error('Game field not found');
-
-
   const cells = [];
   for (let i = 0; i < 16; i++) {
     const cell = document.createElement('div');
@@ -14,16 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const goblin = document.createElement('img');
+  goblin.src = goblinImage;
+  goblin.style.width = '80%';
+  goblin.style.height = '80%';
 
-  let currentCellIndex = Math.floor(Math.random() * cells.length);
-  cells[currentCellIndex].appendChild(goblin);
+  let currentIndex = Math.floor(Math.random() * cells.length);
+  cells[currentIndex].appendChild(goblin);
 
   setInterval(() => {
-    let newCellIndex;
+    let newIndex;
     do {
-      newCellIndex = Math.floor(Math.random() * cells.length);
-    } while (newCellIndex === currentCellIndex);
-    cells[newCellIndex].appendChild(goblin);
-    currentCellIndex = newCellIndex;
+      newIndex = Math.floor(Math.random() * cells.length);
+    } while (newIndex === currentIndex);
+    cells[newIndex].appendChild(goblin);
+    currentIndex = newIndex;
   }, 1000);
 });
