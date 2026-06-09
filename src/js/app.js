@@ -1,12 +1,14 @@
 import image from "../img/goblin.png";
 
+const CELL_COUNT = 16;
+
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector("#game-container");
   const board = document.createElement("div");
   board.className = "game-board";
   container.append(board);
 
-  for (let i = 0; i < 16; i++) {
+  for (let i = 0; i < CELL_COUNT; i++) {
     const cell = document.createElement("div");
     cell.className = "cell";
     board.append(cell);
@@ -25,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     do {
       newIndex = getRandomIndex();
     } while (newIndex === currentIndex);
-    cells[newIndex].appendChild(img);
+    cells[newIndex].append(img);   // заменён appendChild
     currentIndex = newIndex;
   };
 
